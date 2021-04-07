@@ -33,7 +33,7 @@ app.post('/api/jobs', async (req,res) => {
         await job.save();
         res.send(job);
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.sendStatus(500);
     }
 });
@@ -43,7 +43,7 @@ app.get('/api/jobs', async (req, res) => {
         let jobs = await Job.find();
         res.send(jobs); 
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.sendStatus(500);
     }
 });
@@ -60,7 +60,7 @@ app.put('/api/jobs/:id', async (req, res) =>{
         await job.save(job);
         res.send(job);
     } catch (error) {
-        console.log(error);
+       // console.log(error);
         res.sendStatus(500);
     }
 });
@@ -72,7 +72,7 @@ app.delete('/api/jobs/:id', async (req, res) => {
         });
           res.sendStatus(200);
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.sendStatus(500);
     }
 });
@@ -99,7 +99,7 @@ app.post('/api/applications', async (req, res) => {
         await app.save();
         res.send(app);
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.sendStatus(500);
     }
 });
@@ -108,7 +108,7 @@ app.get('/api/applications', async (req, res) => {
         let applications = await App.find();
         res.send(applications); 
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.sendStatus(500);
     }
 });
@@ -119,9 +119,27 @@ app.delete('/api/applications/:id', async (req, res) => {
         });
           res.sendStatus(200);
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.sendStatus(500);
     }
 });
+app.put('/api/applications/:id', async (req, res) =>{
+    try {
+        let app = await App.findOne ({
+            _id: req.params.id
+        });
+        app.name = req.body.name;
+        app.degree = req.body.degree;
+        app.contact = req.body.contact;
+        app.availability = req.body.availability;
+        app.pitch = req.body.pitch;
+        await app.save(app);
+        res.send(app);
+    } catch (error) {
+       // console.log(error);
+        res.sendStatus(500);
+    }
+});
+
 
 app.listen(3001, () => console.log('Server listening on port 3001!'));
