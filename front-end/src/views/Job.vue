@@ -45,7 +45,7 @@ export default {
         this.jobs = response.data;
         return true;
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     },
     saveJob(job) {
@@ -58,7 +58,7 @@ export default {
         this.getJobs();
         return true;
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     },
   },
