@@ -104,7 +104,7 @@ export default {
             this.submit = true;
             this.$root.$data.my_applications = [];
         } catch (error) {
-            console.log(error);
+            //console.log(error);
         }
     },
         
